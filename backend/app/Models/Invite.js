@@ -7,7 +7,7 @@ class Invite extends Model {
   static boot () {
     super.boot()
 
-    this.addHook('afterCreate', 'InviteHook.sendInvitationMail')
+    this.addHook('afterCreate', 'InviteHook.sendInvitationEmail')
   }
 
   user () {
