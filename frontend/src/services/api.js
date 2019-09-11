@@ -6,15 +6,20 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    const { token } = store.getState().auth;
+  const { token } = store.getState().auth;
+  const { active: team } = store.getState().teams;
 
-    const headers = { ...config.headers };
+  const headers = { ...config.headers };
 
-    if(token) {
-        headers.Authorization = `Bearer ${token}`;
-    }
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
 
-    return { ...config, headers };
-})
+  if (team) {
+    headers.TEAM = team.slug;
+  }
+
+  return { ...config, headers };
+});
 
 export default api;
