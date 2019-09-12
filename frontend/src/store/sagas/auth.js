@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { call, put } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { actions as toastrActions } from 'react-redux-toastr';
@@ -20,4 +21,11 @@ export function* signIn({ email, password }) {
       message: 'Verifique seu e-mail/senha!',
     }));
   }
+}
+
+export function* signOut() {
+  localStorage.removeItem('@Omni:token');
+  localStorage.removeItem('@Omni:team');
+
+  yield put(push('/signin'));
 }
