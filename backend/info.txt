@@ -1,0 +1,4 @@
+RUN SERVER
+
+-> adonis serve --dev
+-> adonis kue:listen
