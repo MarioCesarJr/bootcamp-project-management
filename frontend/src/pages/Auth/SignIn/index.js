@@ -1,3 +1,4 @@
+/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,10 +10,6 @@ import Button from '~/styles/components/Button';
 import { Container, SignForm } from '../styles';
 
 class SignIn extends Component {
-  static propTypes = {
-    signInRequest: PropTypes.func.isRequired,
-  }
-
   state = {
     email: '',
     password: '',
@@ -51,6 +48,10 @@ class SignIn extends Component {
     );
   }
 }
+
+SignIn.propTypes = {
+  signInRequest: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(AuthActions, dispatch);
 
